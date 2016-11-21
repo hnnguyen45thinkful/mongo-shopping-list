@@ -31,7 +31,7 @@ if (require.main === module) {
         }
     });
 };
-
+//Adding the routes after the middlewares
 var Item = require('./models/item');
 
 app.get('/items', function(req, res) {
@@ -57,6 +57,35 @@ app.post('/items', function(req, res) {
         res.status(201).json(item);
     });
 });
+
+//Try It!
+//Currently your application only supports the get and post methods. Try to add in put and delete methods, using Mongoose to edit and remove items from the database.
+
+app.delete('/items/:id', function(req,res) {
+   Item.findOneAndRemove({ _id: req.params.id}, 
+        function(err,item) {
+            if (err) {
+                return res.status(500).json({
+                message: 'Internal Server Error'
+            });
+        }
+     res.status(201).json(item);
+   });
+});
+
+app.put('/items/:id', function(req,res) {
+   var id = {_id:req.params.id};
+   var update = {name:req.body.name};
+    Item.findOneAndUpdate(id, update, function(err,items) {
+        if (err) {
+        return res.status(500).json({
+            message: 'Internal Server Error'
+        });
+        }
+    res.status(201).json(items);
+    });
+});
+
 
 app.use('*', function(req, res) {
     res.status(404).json({
