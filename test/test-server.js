@@ -68,6 +68,31 @@ describe('Shopping List', function() {
             storage.items[3].name.should.equal('Kale');
         done();
       });
+  });
+//Applying and Copying the PUT test for the shopping list from the shopping list API.      
+        it('should edit an item on PUT', function(done) {
+            chai.request(app)
+            .get('/items')
+            .end(function(err, res) {
+                var editId = res.body[0]._id;
+                    chai.request(app)
+                    .put('/items/' + editId)
+                    .send({name: 'Kidney beans'})
+                    .end(function(err, res){
+                    res.should.have.status(201);
+                    chai.request(app)
+                    .put('/items/' + editId)
+                    .end(function(err, res) {
+                    res.body.should.be.a('object');
+                    res.body.should.have.property('_id');
+                    res.body.should.have.property('name');
+                    res.body._id.should.be.a('string');
+                    res.body.name.should.be.a('string');
+                    res.body.name.should.equal('Kidney beans');
+                done();
+              });
+          });
+      });
   });  
     //Given the after function, which is run after each test is run, you remove all of the items from the database so you are starting from a clean slate for the next test
     after(function(done) {
