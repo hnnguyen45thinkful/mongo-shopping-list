@@ -99,7 +99,7 @@ describe('Shopping List', function() {
         chai.request(app)
             .get('/items')
             .end(function(err, res) {
-                res.body.should.have.length(2);
+                res.body.should.have.length(3);
             done();
             });
         });
