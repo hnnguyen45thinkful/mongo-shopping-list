@@ -1,7 +1,8 @@
 language: node_js
 node_js: node
-services:
+services:  
 - mongodb
+before_script: chmod 0777 ./node_modules/.bin/_mocha
 addons:
   apt:
     sources:
