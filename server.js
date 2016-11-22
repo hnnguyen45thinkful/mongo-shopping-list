@@ -1,3 +1,4 @@
+//Created and edited by Hieu Nguyen
 var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');

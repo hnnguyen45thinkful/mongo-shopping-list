@@ -1,3 +1,4 @@
+//Created by Hieu Nguyen
 global.DATABASE_URL = 'mongodb://localhost/shopping-list-test';
 
 var chai = require('chai');
