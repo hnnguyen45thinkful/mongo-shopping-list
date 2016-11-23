@@ -1,6 +1,6 @@
 language: node_js
 node_js: node
-services:  
+services:
 - mongodb
 before_script: chmod 0777 ./node_modules/.bin/_mocha
 addons:
@@ -9,3 +9,10 @@ addons:
     - mongodb-3.2-precise
     packages:
     - mongodb-org-server
+deploy:
+  provider: heroku
+  api_key:
+    secure: HU/lAkHbI+Ctr2OE5jfwxyTqD4OKSdu6Swzgsq+MlHshL4VicEC/Cj+AxWUIGLDnvS9ZWKs5AgfJSX6dn4TL/G/3lJXxpMh5e1CXqi0jIcPZfBxFCumEKN+T1y6DGF12k8Z/eWcLSNv6/wTA1Ah6EW8Bm0ANEbb+jO+9fFnBYcRyYtn9TealslT+xKrOplx7w20mIq6mHRRqDXsY2bLWwW78AyYKILN5IujK4DvyWWMV+ITN6L3Hrf6Hugnje18+G9B4i7t3evC1pvHfxrBF3NCvn9njZHoUh5Z2tseLD/O4ei+uTttMQxkD1yyVau6iLcKktkbFEm1GAxZU2eAvpDAhtRtMMUi8frVoJ+3oDpWYlyTE4DgNGK26JGJcHOO44JXOekj0hGbvXN7m9MqNzUlOqJ9ijXlXwsQq56r16jJ6Eg4nzBMLT+juGxgafNNcWKjBoRR3NSrFMJc9eArCjn9EaKQD2UNTH14Yu2AKwOKmID1+cCQ4Oux3KqKvSPfQUwdGrNFEIfEManWlYmhQFdJN909opc5JjHGIIC7mVIJded7AqwCaYNsZQeH1ov+bRdAqNIHXHMheVTw3QkcdYtOoTYwu6II3158Xvg9HdoPU87TBqr01/Y2Vr+yNE4p4vrTxNhTyN3TpCz7M/MEba8+pXA4znpXLqdsopFhE/Uo=
+  app: mongo-shopping-list
+  on:
+    repo: hnnguyen45thinkful/mongo-shopping-list
